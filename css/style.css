@@ -164,7 +164,7 @@ body{
 .fullview{
        width: 32px;
     height: 22px;
-    margin-top: 270px;
+    margin-top: 350px;
     margin-left: 10px;
     font-size: 22px;
 }
@@ -175,6 +175,7 @@ body{
 }
 .toolBody{
         background: #dbd9d98f;
+        height: 800px;
 }
 .toolmenu{
     background: #1c0001;
@@ -429,7 +430,7 @@ td{
     font-size: 25px;
 }
 .report-card{
-    height: 540px;
+    height: 615px;
 }
 .rep-text{
         text-align: center;
@@ -444,11 +445,11 @@ td{
 }
 .rep-chart{
         margin-top: 20px;
-    height: 310px;
+    height: 340px;
 }
 .rep-chart1{
         margin-top: 20px;
-    height: 310px;
+    height: 355px;
 }
 .codeReview{
     display: none;
@@ -632,7 +633,7 @@ td{
     display: none;
 }
 .runTable{
-        height: 590px;
+        height: 645px;
     border-bottom: 1px solid #d3c9c9;
 }
 .new-run-btn{
@@ -904,7 +905,7 @@ td{
     z-index: 10;
    /* width: 415px;*/
     background: #ffffff;
-    height: 700px;
+    height: 800px;
 }
 .bug1{
    width: 125px;
@@ -951,6 +952,10 @@ td{
 
 .cardSizedash :hover{
 
+}
+
+.all-bor-rad{
+   border-radius: 3px; 
 }
 
 .sub-head-text{
