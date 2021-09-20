@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>AutomationTool</title>
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css\style.css">
+		<script type="text/javascript" src="js\toolpagejavascript.js"></script>
+
+</head>
+<body>
+<div id="loader"class="center"></div>
+	<!-- HEADER -->
+	<div class="row header">
+		<div class="col-1">
+			<div class="logo i-hover" id="logo-Id">
+				<img src="D:\Toolpages\Images\projects-logo.png" style="width: 40px;margin: 10px 20px;">
+			</div>
+		</div>	
+		<div class="col-3">
+			<div class="name">
+				<p class="nameText">AutomationTool</p>
+			</div>
+		</div>
+		<div class="col-8">
+		<nav class="navbar navbar-expand-lg ">
+		  <div class="container-fluid">
+		    <div class="collapse navbar-collapse justify-content-end nav-move">
+		      <ul class="navbar-nav ">
+		        <li class="nav-item mx-2" >
+		        		<div class="searchBox">
+						<div class="input-group">
+						  <input type="search" class="form-control rounded searchInputBox" placeholder="Search" aria-label="Search"aria-describedby="search-addon" style="background: #494949;color: #fff;"/>
+						  <button type="button" class="btn btn-outline-secondary btn-sm" style="margin-top: 5px;">search</button>
+						</div>
+					</div>
+		        </li>
+		        <li class="nav-item mx-2">
+					<div class="dropdown" id="drop">
+						<button type="button" class="btn dropbtn btn-outline-secondary btn-sm">Test Type ▼</button>
+		  				<div class="dropdown-content">
+		  					<a href="#">Manual Test</a>
+		  					<a href="#">Automation Test</a>
+		  				</div>
+					</div>
+		        </li>
+		        <li class="nav-item mx-2">
+		        	<div class="addrun">
+						<button type="button" class="btn btn-outline-secondary btn-sm" id="new-run-home">+ Add Test</button>
+					</div>
+		        </li>
+		        <li class="nav-item mx-2">
+		          <div class="plusIcon">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</div>
+		        </li>
+		        <li class="nav-item mx-2">
+		          <div class="bugIcon">
+						<i class="fa fa-bug" aria-hidden="true" id="bug-Id" style="font-size: 27px;"></i>			
+					</div>
+		        </li>
+		        <li class="nav-item mx-2">
+		          <div class="profile">
+						<i class="fa fa-user-circle profileIcon"></i>
+					</div>
+		        </li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+	</div>
+	</div>
+
+	<div class="bug-content">
+	<div class="row container">
+		<div class="bug-header">
+			<div class="my-2 text-danger">
+				<h6>Add Issue</h6>
+				<hr>
+			</div>
+		</div>
+		<div class="bug-body">
+			<div class="my-3">
+				<label class="la-name">Bug Title</label>
+				<input type="name" class="form-control my-2" id="exampleFormControlInput1" style="font-size :13px;width: 360px;" placeholder="Enter the BugName">
+				<label class="la-name">Description</label>
+				<input type="name" class="form-control my-2 " id="exampleFormControlInput1" style="font-size :13px;width: 360px;" placeholder="Enter your Description ">
+				<label class="la-name">Tag Name</label>
+				<input type="name" class="form-control my-2 " id="exampleFormControlInput1" style="font-size :13px;width: 360px;" placeholder="Enter the TagName">
+	   			<label class="la-name">Assinee Name</label>
+				<input type="name" class="form-control my-2 " id="exampleFormControlInput1" style="font-size :13px;width: 360px;" placeholder="Enter the Name">
+				<div class="my-5">
+					<button type="button" class="btn btn-danger btn-sm" id="bugadd-Id">Add</button>
+					<button type="button" class="btn btn-danger btn-sm mx-2" id="bugcancel-Id">Cancel</button>
+				</div>
+					   			
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- <div id="demo"></div> -->
+	<!-- <div id="jqxLoader">
+    </div> -->
+	<!-- BODY -->
+	<div class="row toolBody">
+		<div class="expand" data-toggle="tooltip" data-placement="bottom" title="Minimize" aria-hidden="true" style="color: #c4c4c4;" id="expand_Id">
+				<i class="fa fa-arrow-circle-right"></i>
+		</div>
+		<div class="col-1 col-sm-1 toolmenu">
+			<div class="row report-Id" attr="dashboard">
+				<div class="dashBoard i-hover">
+					<i class="fa fa-dashboard dashboardIcon" aria-hidden="true"></i>
+					<small class="iconText" style="margin-left: 8px;margin-top: -10px;"><b>DashBoard</b></small>
+				</div>
+			</div>
+			<div class="row report-Id" attr="report">
+				<div class="report  i-hover" >
+					<i class="fa fa-pie-chart reportIcon" id="repicon" aria-hidden="true"></i>
+					<small class="iconText" style="margin-left: 15px;margin-top: -5px;"><b>Report</b></small>
+				</div>
+			</div>
+			<div class="row report-Id" attr="build">
+				<div class="review  i-hover" >
+					<i class="fa fa-building reviewIcon" aria-hidden="true"></i>
+					<small class="iconText" style="margin-top: -10px;margin-left: 17px;"><b>Build</b></small>
+				</div>
+			</div>
+			<div class="row report-Id" attr="runtest">
+				<div class="review  i-hover" >
+					<i class="fa fa-cogs reviewIcon" aria-hidden="true" style="margin-top: 10px;"></i>
+					<small class="iconText" style="margin-top:-10px;margin-left: 13px;"><b>TestRun</b></small>
+				</div>
+			</div>
+			<div class="row report-Id" attr="machine">
+				<div class="machine i-hover">
+					<i class="fa fa-desktop macineIcon"></i>
+					<small class="iconText" style="margin-top: 5px;margin-left: 13px;"><b>Machine</b></small>
+				</div>
+			</div>
+			<div class="row more" data-toggle="tooltip" data-placement="bottom" title="More" id="more-Id">
+				<div class="i-hover" >
+					<i class="fa fa-ellipsis-h moreIcon" aria-hidden="true"></i>
+				</div>
+				<div class="more-content">
+					<div class="more-head"></div>
+					<div class="row">
+						<div class="cnt-txt">
+							<div class="row">
+								<div class="Link  i-hover more-op-Id"id="link-Id" attr="link">
+									<i class="fa fa-link linkIcon" aria-hidden="true"></i>
+									<small class="moreIconTxt"  style="margin-top: 12px;"><b>Link</b></small>
+								</div>
+							</div>
+							<hr class="my-2 bg-danger">
+							<div class="row">
+								<div class="impact  i-hover more-op-Id" id="report-Id" attr="impact">
+									<i class="fa fa-cog impactIcon"></i>
+									<small class="moreIconTxt" style="margin-top: 10px;"><b>Impact Analysis</b></small>
+								</div>
+							</div>
+						</div>
+						<hr class="my-2 bg-danger">
+						<div class="row">
+								<div class="bug1 i-hover more-op-Id" id="report-Id" attr="bug">
+									<i class="fa fa-bug bugIcon1" aria-hidden="true"></i>
+								<small class="moreIconTxt"><b>Bug</b></small>
+							</div>
+						</div>
+						<hr class="my-2 bg-danger">
+					</div>
+				</div>
+			</div>
+			<div class="row fullview">
+					<i class="fa fa-arrow-circle-left full-view" data-toggle="tooltip" data-placement="bottom" title="Full View" aria-hidden="true" style="color: #454949;" id="full-view-Id"></i>
+			</div>
+		</div>
+		<div class="col-11 viewBody">
+			<div class="dashview1 bodySection mx-2" id='dashboard'>
+				<div class="row my-1">
+				<div class="col-sm-8">
+					<div class="container bg-white all-bor-rad">
+						<div class="row">
+							<div class="col-4">
+								<div class="my-2">
+									<div class="card">
+										  <div class="card-header">
+										   <h5 class="text-danger">Last Added Test</h5>
+										  </div>
+										  <div class="card-body">
+										    <h6 class="card-title">Module Name</h6>
+										    <p class="card-text" style="font-size:13px">Name Of Module</p>
+										    <h6 class="card-title">Numer Of Classes</h6>
+										     <p class="card-text" style="font-size:13px">Classes count</p>
+										    <h6 class="card-text">Number Of Test Casses</h6>
+										    <p class="card-text" style="font-size:13px">Test Cases Count</p>
+										    <button class="btn btn-warning btn-block">Go Test Run </button>
+										  </div>
+										</div>
+								</div>
+							</div>
+							<div class="col-8 ">
+								<div class="header1 container my-2">
+									<div class="row">
+										<div class="col-8"> 
+											<h5 class="text-danger">Test Cases Report</h5>
+										</div>
+										<div class="col-4 text-end"> 
+											<div class="more-ellips">
+											<i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+										</div>
+										</div>
+										<hr>
+									</div>
+								</div>
+								<canvas id="lineChart"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 bg-white all-bor-rad">
+						<div class="header1 container my-2">
+							<div class="row">
+								<div class="col-8"> 
+									<h5  class="text-danger">Test Cases Report</h5>
+								</div>
+								<div class="col-4 text-end"> 
+									<div class="more-ellips">
+										<i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+									</div>
+								</div>
+								<hr>
+							</div>
+						</div>		
+					<div class="my-2">
+						<canvas id="doughnutChart"></canvas>
+					</div>
+				</div>
+			</div>
+				<div class="row">
+					<div class="col-md-3 col-sm-6">
+						<div class="i-header container bg-white all-bor-rad">
+							<h6 class="text-primary">Total Casses</h6>
+							<div class="row">
+							<!-- <div class="col-6">
+									<div class="total-icon">
+										<i class="fa fa-file-o fa-2x  my-2" aria-hidden="true"></i>
+									</div>
+							</div> -->
+							<div class="">
+								<h6>10</h6>
+								<div class="progress mb-2">
+								  <div class="progress-bar progress-bar-striped bg-primary " role="progressbar" style="width: 80%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10"></div>
+								  <div class="progress-bar progress-bar-striped bg-warning " role="progressbar" style="width: 20%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10"></div>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="i-header container bg-white all-bor-rad">
+							<h6 class="text-success">Passed Cases</h6>
+							<div class="row">
+							<!-- <div class="col-6">
+									<div class="pass-Icoon">
+										<i class="fa fa-check fa-2x  my-2" aria-hidden="true"></i>
+									</div>
+							</div> -->
+							<div class="">
+								<h6>08</h6>
+								<div class="progress mb-2">
+								  <div class="progress-bar progress-bar-striped bg-success " role="progressbar" style="width: 80%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="50"></div>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="i-header container bg-white all-bor-rad">
+							<h6 class="text-danger">Failed Cases</h6>
+							<div class="row">
+							<!-- <div class="col-6">
+									<div class="fail-Icoon">
+										<i class="fa fa-exclamation-triangle fa-2x my-2" aria-hidden="true"></i>
+									</div>
+							</div> -->
+							<div class="">
+								<h6>02</h6>
+								<div class="progress  mb-2">
+								  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 20%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="50"></div>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 bg-white all-bor-rad">
+						<div class="i-header container ">
+							<h6 class="text-warning">Add</h6>
+							<div class="row">
+							<div class="col-6">
+									<div class="add-Icoon">
+										<i class="fa fa-plus fa-2x my-2" aria-hidden="true"></i>
+									</div>
+							</div>
+							<div class="col-6">
+								<h6 class="my-2">Add New</h6>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="row my-1">
+					<div class="col-md-4 col-sm-12">
+						<div class="container bg-white all-bor-rad pb-2">
+							<div class="ava-heaer">
+								<h5 class="text-danger">Recent Class Name</h5>
+								<div class="recent-table">
+									<table class="table table-hover table-sm text-size">
+										  <thead class="bg-thead" style="color: #e38b1894;">
+										    <tr>
+										      <th scope="col">ID</th>
+										      <th scope="col">ClassName</th>
+										      <th scope="col">CASES</th>
+										    </tr>
+										  </thead>
+										  <tbody>
+										    <tr>
+										      <th scope="row">1</th>
+										      <td>Passed Cases</td>
+										      <td>10</td> 
+										    </tr>
+										    <tr>
+										      <th scope="row">2</th>
+										      <td>Faild Cases</td>
+										      <td>10</td> 
+										    </tr>
+										    <tr>
+										      <th scope="row">3</th>
+										      <td>Passed Cases</td>
+										      <td>10</td> 
+										    </tr>
+										    <tr>
+										      <th scope="row">4</th>
+										      <td>Passed Cases</td>
+										      <td>10</td> 
+										    </tr>
+										     <tr>
+										      <th scope="row">5</th>
+										      <td>Passed Cases</td>
+										      <td>10</td> 
+										    </tr>
+										  </tbody>
+										</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8 col-sm-12 bg-white all-bor-rad">
+							<div class="container">
+							<div class="ava-heaer">
+								<h5 class="text-danger">Available Machines</h5>
+								</div>
+								<div>
+									<table class="table table-hover table-sm text-size my-2">
+								<thead class="bg-thead" style="color:#0d6bf8bf">
+									<tr>
+									   <th scope="col">Device</th>
+									   <th scope="col">Platform</th>
+									   <th scope="col">Active User</th>
+									   <th scope="col">Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+								   	<th>1</th>
+									    <td>Linux</td>
+									    <td>-</td>
+									    <td><button type="button" class="btn btn-outline-secondary btn-sm">connect</button></td>
+									</tr>
+									<tr>
+									    <th scope="row">2</th>  	
+									    <td>Windows</td>
+									    <td>-</td>
+									    <td><button type="button" class="btn btn-outline-secondary btn-sm">connect</button></td> 
+									</tr>
+									<tr>
+									    <th scope="row">3</th>
+									    <td>Windows</td>
+									    <td>-</td>
+									    <td><button type="button" class="btn btn-outline-secondary btn-sm">connect</button></td>
+									</tr>
+									<tr>
+									    <th scope="row">4</th>
+									    <td>Linux</td>
+									    <td>-</td>
+									    <td><button type="button" class="btn btn-outline-secondary btn-sm">connect</button></td>
+									</tr> 
+								</tbody>
+							</table>
+								</div>
+						</div>
+						</div>
+					</div>
+	</div>
+
+	<!-- DashBoardView -->
+	<!-- <div id='dashboard'class="bodySection dashview1">
+		<div class="dashview1">
+			<div class=" container mx-10">
+				<div class="dash-header">
+					<div class="row">
+						<div class="col-md-6 col-xl-4">
+							<div class="card mb-2 my-2 bg-night-fade cardSizedash">
+								<div class="container mt-4">
+									<div class="row align-items-center">
+										<div class="col-md-9">
+											<div class="case-text">
+												<div>
+													<p class="text-white head-text">Total Test Cases</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="case-text">
+												<h3 class="text-white head-text">07</h3>
+											</div>
+										</div>
+									</div>	
+								</div>	
+							</div>
+						</div>
+					<div class="col-md-6 col-xl-4">
+						<div class="card mb-2 my-2 bg-green cardSizedash">
+							<div class="container mt-4">
+								<div class="row align-items-center">
+									<div class="col-md-9">
+										<div class="case-text">
+											<div>
+											<p class="text-white head-text">Passed Test Cases</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="case-text">
+											<h3 class="text-white head-text">06</h3>
+										</div>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-xl-4">
+						<div class="card mb-2 my-2 bg-miled cardSizedash">
+							<div class="container mt-4">
+								<div class="row align-items-center">
+									<div class="col-md-9">
+										<div class="case-text">
+											<div>
+											<p class="text-white head-text">Failed Test Cases</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="case-text">
+											<h3 class="text-white head-text">01</h3>
+										</div>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="dashbody">
+				<div class="row">
+						<div class="col-md-12 col-lg-6 col-xl-5">
+								<div class="card details-card-head">
+									<div class="card-header text-white bg-success" style="text-align: center;">
+										<h5>Passed Casses</h5>
+									</div>
+									<div class="card-body" style="padding: 0px 0px;">
+									    <div class="container">
+									       <canvas id="myChart"></canvas>
+									    </div>
+									</div>
+								</div>
+								<div class="card my-1 details-card-head">
+									<div class="card-header text-white bg-danger" style="text-align: center;">
+										<h5>Failled Casses</h5>
+									</div>
+								<div class="card-body" style="padding: 0px 0px;">
+									<div class="container">
+								      	<canvas id="myChart1"></canvas>
+									</div>
+								</div>
+							</div>
+					</div>
+					<div class="col-md-12 col-lg-6 col-xl-7">
+						<div class="card">
+							<div class="card-header text-white bg-primary" style="text-align: center;">
+								<h5>Total Casses</h5>
+							</div>
+							<div class="card-body">
+								<canvas id="doughnutChart"></canvas>
+
+								<div class="container" style="height: 150px;">
+									<div class="table table-hover">
+										<table class="table table-hover">
+							  <thead style="color: #e38b1894;">
+							    <tr>
+							      <th scope="col">ID</th>
+							      <th scope="col">TYPE</th>
+							      <th scope="col">CASES</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <th scope="row">1</th>
+							      <td>Passed Cases</td>
+							      <td>06</td> 
+							    </tr>
+							    <tr>
+							      <th scope="row">2</th>
+							      <td>Faild Cases</td>
+							      <td>01</td> 
+							    </tr>
+							  </tbody>
+							</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		</div>
+		</div> -->
+
+		<!-- ReportView -->
+		<div id='report' class="bodySection reportView">
+			<div class="reportView1">
+			<div class="row repHeader">
+				<div class="col-lg-7 col-sm-12">
+					<div class="card headingName-card">
+						<div class="container name-txt text-secondary">
+							<p style="margin-bottom: 0;"><b>Module Name</b></p>
+							<div class="dropdown show dpd">
+  								<a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ReportType</a>
+  								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								   <a class="dropdown-item" href="#">Table Repot</a>
+									<a class="dropdown-item" href="#">Pie Chart</a>
+									<a class="dropdown-item" href="#">Bar Chart</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card report-card">
+						<div class="rep-text">
+							<p><b>REPORT TABLE</b></p>
+						</div>
+						<hr>
+						<div class="reportTable container">
+							<table class="table table-hover">
+							  <thead style="color: #fba330;" class="thead-dark">
+							    <tr>
+							      <th scope="col">Id</th>
+							      <th scope="col">Case Name</th>
+							      <th scope="col">Description</th>
+							      <th scope="col">Pass</th>
+							      <th scope="col">Faill</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <th scope="row">1</th>
+							      <td>Casse 1</td>
+							      <td>Create Title only</td>
+							      <td>✔</td>
+							      <td></td> 
+							    </tr>
+							    <tr>
+							      <th scope="row">2</th>
+							      <td>Casse 2</td>
+							      <td>Title And Owner Name</td> 
+							      <td></td>
+							      <td>✖</td>
+							    </tr>
+							    <tr>
+							      <th scope="row">3</th>
+							      <td>Casse 3</td>
+							      <td>Title with Start Date</td>  
+							      <td>✔</td>
+							      <td></td>
+							    </tr>
+							    <tr>
+							      <th scope="row">4</th>
+							      <td>Casse 4</td>
+							      <td>Title With Start And End date</td>  
+							      <td>✔</td>
+							      <td></td>
+							    </tr>
+							    <tr>
+							      <th scope="row">5</th>
+							      <td>Casse 5</td>
+							      <td>Title With Start And End date</td>  
+							      <td>✔</td>
+							      <td></td>
+							    </tr>
+							    <tr>
+							      <th scope="row">6</th>
+							      <td>Casse 6</td>
+							      <td>Title With Start And End date</td>  
+							      <td>✔</td>
+							      <td></td>
+							    </tr>
+							    <tr>
+							      <th scope="row">7</th>
+							      <td>Casse 7</td>
+							      <td>Title With Start And End date</td>  
+							      <td>✔</td>
+							      <td></td>
+							    </tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5 col-sm-12">
+					<div class="card rep-chart">
+						<div class="chart-text">
+							<p><b>PIE-CHART REPORT</b></p>
+						</div>
+						<hr>
+						<div style="text-align:center;">
+							<img src="https://image.flaticon.com/icons/png/512/138/138339.png" style="width: 200px;height: 200px;">
+						</div>
+					</div>	
+					<div class="card rep-chart1">
+						<div class="chart-text">
+							<p><b>BAR-CHART REPORT</b></p>
+						</div>
+						<hr>
+						<div style="text-align:center;">
+							<img src="https://www.iconpacks.net/icons/1/free-bar-chart-icon-676-thumb.png" style="width: 200px;height: 200px;">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<!-- BuildView -->
+		<div id='build'class="bodySection codeReview">
+			<div class="codeReview1">
+			<div class="row codeBox">
+				<div class="container-fluid">
+			<div class="col-sm-12">
+				<div class="container my-5">
+					<div class="container-fluid">
+						<div class="uploadBox">
+						<div class="row">
+							<div class="col-4">
+								<div class="types">
+									<div class="container build-la mx-5" style="color: #fa1616;">
+										<p>Checkout Lable</p>
+										<div class="text-ma">
+											<p>Build Type</p>
+										</div>
+										<div class="text-ma">
+											<p>Dependency Module</p>
+										</div>
+										<div class="text-ma">
+											<p>IDC Zip Needed</p>
+										</div>
+										<div class="text-ma">
+											<p>Impact Run</p>
+										</div>
+										<div class="text-ma">
+											<p>Security Report Needed</p>
+										</div>
+										<div class="text-ma">
+											<p>Build Generate Report Needed</p>
+										</div>
+										<div class="text-ma">
+											<p>SD Deploy Needed</p>
+										</div>
+									</div>	
+								</div>
+							</div>
+							<div class="col-8">
+								<div class="types">
+									<div class="container build-la">
+										<div>
+											<select class="form-control form-control-sm">
+  												<option>Project</option>
+  												<option>Task</option>
+  												<option>Issue</option>
+  												<option>Milestone</option>
+											</select>
+										</div>
+										<div class="row text-ma sele-rdio">
+											<div class="col-3">
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+												  	<label class="form-check-label" for="exampleRadios1">Full</label>
+												</div>
+											</div>
+											<div class="col-3">
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+												  	<label class="form-check-label" for="exampleRadios1">Window</label>
+												</div>
+											</div>
+											<div class="col-3">
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+												  	<label class="form-check-label" for="exampleRadios1">Linux</label>
+												</div>
+											</div>
+											<div class="col-3">
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+												  	<label class="form-check-label" for="exampleRadios1">Mac Os</label>
+												</div>
+											</div>
+										</div>
+										<div class="text-ma1">
+											<input class="form-control form-control-sm" type="text" placeholder="Enter Dependency Name">
+										</div>
+										<div>
+											<select class="form-control form-control-sm" style="margin-top: 20px;">
+  												<option>Yes</option>
+  												<option>No</option>
+											</select>
+										</div>
+										<div>
+											<select class="form-control form-control-sm" style="margin-top: 20px;">
+  												<option>Yes</option>
+  												<option>No</option>
+											</select>
+										</div>
+										<div class="row sele-rdio" style="margin-top: 30px;">
+											<div class="col-4">
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+											 		<label class="form-check-label" for="inlineRadio1">Yes</label>
+												</div>
+											</div>
+											<div class="col-4">
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+													<label class="form-check-label" for="inlineRadio2">No</label>
+												</div>
+											</div>
+										</div>
+										<div class="row sele-rdio">
+											<div class="col-4">
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+											 		<label class="form-check-label" for="inlineRadio1">Yes</label>
+												</div>
+											</div>
+											<div class="col-4">
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+													<label class="form-check-label" for="inlineRadio2">No</label>
+												</div>
+											</div>
+										</div>
+										<div class="row sele-rdio">
+											<div class="col-4">
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+											 		<label class="form-check-label" for="inlineRadio1">Yes</label>
+												</div>
+											</div>
+											<div class="col-4">
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+													<label class="form-check-label" for="inlineRadio2">No</label>
+												</div>
+											</div>
+										</div>
+										<div class="upBtn my-5" id="buil-btn-id">
+											<button type="button" class="btn btn-secondary">Build</button>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="build-report">
+			<div class="container">
+				<div class="new-build-btn">
+				<div class="build-rep-head">
+					<h4>Build</h4>
+				</div>
+				<button type="button" class="btn btn-primary" id="new-build"><b>+</b>Build</button>
+				<hr>
+			</div>
+			<div class="build-table container my-2">
+					<table class="table table-hover">
+						<thead style="color: #13a8ff;" class="thead-dark">
+							<tr>
+							   <th scope="col">Id</th>
+							   <th scope="col">Build Lable</th>
+							   <th scope="col">Started By</th>
+							   <th scope="col">Build Comment</th>
+							   <th scope="col">Size(MB)</th>
+							   <th scope="col">Started At</th>
+							   <th scope="col">View Source</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+							   	<th scope="row">1</th>
+							   	<td>Lable 1</td>
+							   	<td>Tester 2</td>
+							    <td>Task Remove</td>
+							    <td>300</td>
+							    <td>09-03-2021</td>
+							    <td>link</td> 
+							</tr>
+							<tr>
+							   	<th scope="row">2</th>
+							   	<td>Lable 3</td>
+							   	<td>Tester 1</td>
+							    <td>Task</td>
+							    <td>300</td>
+							    <td>09-04-2021</td>
+							    <td>link</td>
+							</tr>
+							<tr>
+							    <th scope="row">3</th>
+							   	<td>Lable 1</td>
+							   	<td>Tester 1</td>
+							    <td>Task Add</td>
+							    <td>300</td>
+							    <td>09-02-2021</td>
+							    <td>link</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- RunTest -->
+	<div id='runtest' class="bodySection run-report">
+		<div class="run-report1">
+			<div class="new-run-btn container">
+				<div class="run-rep-head">
+					<h4>Test Run Report</h4>
+				</div>
+				<button type="button" class="btn btn-secondary" id="new-run"><b>+</b> Test Run</button>
+				<hr>
+			</div>
+			<div class="run-table">
+				<div class="runTable container my-3">
+					<table class="table table-hover">
+						<thead style="color: #3dc011;" class="thead-dark">
+							<tr>
+							   <th scope="col">Id</th>
+							   <th scope="col">Tester Name</th>
+							   <th scope="col">Domain</th>
+							   <th scope="col">Machine</th>
+							   <th scope="col">No.OF.Browser</th>
+							   <th scope="col">Build Name</th>
+							   <th scope="col">Priority</th>
+							   <th scope="col">Test%</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+							   	<th scope="row">1</th>
+							   	<td>Tester1</td>
+							   	<td>http//www.demo.com</td>
+							    <td>Linux</td>
+							    <td>3</td>
+							    <td>Demo</td>
+							    <td>Medium</td>
+							    <td>10%</td> 
+							</tr>
+							<tr>
+							    <th scope="row">2</th>
+							   	<td>Tester2</td>
+							   	<td>http//www.demo.com</td>
+							    <td>Windows</td>
+							    <td>3</td>
+							    <td>Demo</td>
+							    <td>Medium</td>
+							    <td>20%</td> 
+							</tr>
+							<tr>
+							    <th scope="row">3</th>
+							   	<td>Tester2</td>
+							   	<td>http//www.demo.com</td>
+							    <td>Windows</td>
+							    <td>3</td>
+							    <td>Demo</td>
+							    <td>Medium</td>
+							    <td>0%</td> 
+							</tr>
+							<tr>
+							    <th scope="row">4</th>
+							   	<td>Tester2</td>
+							   	<td>http//www.demo.com</td>
+							    <td>Windows</td>
+							    <td>3</td>
+							    <td>Demo</td>
+							    <td>Medium</td>
+							    <td>70%</td> 
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="testCode">
+			<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="container">
+						<div class="test1 my-5">
+							<div class="row run-form">
+								<div class="form-wi">
+									<form>	
+									<div class="form-group">
+									   <label class="la-name">Build Name</label>
+									   <input type="email" class="form-control bor-cancel " id="exampleFormControlInput1" placeholder="Enter the Build Name">
+									</div>
+									<div class="domain">
+										<label class="la-name">Select Domain</label>
+										<select class="form-control bor-cancel">
+				  							<option class="la-name">--Select--</option>
+										</select>
+									</div>
+									<div class="domain">
+										<label class="la-name">Select Machine</label>
+										<select class="form-control bor-cancel">
+				  							<option class="opt-font">--Select--</option>
+				  							<option class="opt-font">Windows</option>
+				  							<option class="opt-font">Linux</option>
+				  							<option class="opt-font">Mac Os</option>
+										</select>
+									</div>
+									<div class="browser">
+										<label class="la-name">Number Of Browsers</label>
+										<select class="form-control bor-cancel">
+				  							<option class="la-name">--Select--</option>
+										</select>
+									</div>
+									<div class="form-row row">
+										<div class="col-lg-6 col-sm-12 browser">
+											<div class="form-group">
+									   			<label class="la-name">Module Name</label>
+									   			<input type="name" class="form-control bor-cancel " id="exampleFormControlInput1" placeholder="Enter the TesterName">
+											</div>
+										</div>
+									    <div class="col-lg-6 col-sm-12" style="margin-top: 20px;">
+									    	<label class="la-name">Priority</label>
+									    	<select class="form-control bor-cancel">
+				  								<option class="la-name">None</option>
+				  								<option class="la-name">Low</option>
+				  								<option class="la-name">Medium</option>
+				  								<option class="la-name">High</option>
+											</select>
+									    </div>
+									</div>
+									<div class="run-btn">
+										<button type="button" class="btn btn-secondary" id="run-btn">Run Test</button>
+									</div>
+								</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+		<!-- LinkView -->
+		<div id='link' class="bodySection linkview">
+			<div class="linkview1">
+			<div class="row"><!-- link-tittle-card -->
+				<div class="col-4">
+					<div class="create-li hov-li">
+						<div class="card card-header" style="background: #80dbdbfa;text-align:center ;">
+							<p class="link-heading">Creator Links</p>
+						</div>
+						<div class="li-txt  my-2 text-secondary">
+							<div class="content-li">
+								<ul>
+									<li><a href="#">Add Creator Entry</a></li>
+									<li><a href="#">Automation Request Form</a></li>
+									<li><a href="#">Current Checkin Status</a></li>
+									<li><a href="#">Daily Build Check</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="release-li hov-li">
+						<div class="card card-header" style="background: #c982c0f2;text-align:center ;">
+							<p class="link-heading">Release Details</p>	
+						</div>
+						<div class="li-txt my-2 text-secondary">
+							<div class="content-li">
+								<ul>
+									<li><a href="#">Completed Test Report</a></li>
+									<li><a href="#">Current Build</a></li>
+									<li><a href="#">Release Report</a></	li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="alarm-li hov-li">
+						<div class="card card-header" style="background: #ecae51fa;text-align:center ;">
+							<p class="link-heading">Other Links</p>	
+						</div>
+						<div class="li-txt  my-2 text-secondary">
+							<div class="content-li">
+								<ul>
+									<li><a href="#">Upload Details</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<!-- MachineView -->
+	<div id='machine' class="bodySection machineView">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="container-fluid">
+						<div class="machine-header">
+							<div class="txt-link my-3">
+							<h6 style="color:red">Machines</h6>
+							<a href="#" id="all-mch">All Machine</a>
+							<a href="#" id="inc-mch">Include</a>
+							<a href="#" id="exc-mch">Exclude</a>
+							<a href="#" id="add-mch">Add Machine</a>
+							<a href="#" id="rem-mch">Remove Machine</a>
+						</div>
+					</div>
+				</div>	
+				</div>
+				<div class="col-md-9">
+					<div class="container-fluid">
+						<div class="all-machine my-3" id="all-mch">
+							<table class="table table-hover table-sm">
+								<thead  style="color:#0d6bf8bf">
+									<tr>
+									   <th scope="col">Device</th>
+									   <th scope="col">Ip Address</th>
+									   <th scope="col">Platform</th>
+									   <th scope="col">Active User</th>
+									   <th scope="col">Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+								   	<th>1</th>
+								   	<td>192.192.192.0</td>
+									    <td>Linux</td>
+									    <td>-</td>
+									    <td><button type="button" class="btn btn-outline-secondary btn-sm">connect</button></td>
+									</tr>
+									<tr>
+									    <th scope="row">2</th>
+									   	<td>192.192.192.0</td>   	
+									    <td>Windows</td>
+									    <td>-</td>
+									    <td><button type="button" class="btn btn-outline-secondary btn-sm">connect</button></td> 
+									</tr>
+									<tr>
+									    <th scope="row">3</th>
+									   	<td>192.192.192.0</td>
+									    <td>Windows</td>
+									    <td>-</td>
+									    <td><button type="button" class="btn btn-outline-secondary btn-sm">connect</button></td>
+									</tr>
+									<tr>
+									    <th scope="row">4</th>
+									   	<td>192.192.192.0</td>
+									    <td>Linux</td>
+									    <td>-</td>
+									    <td><button type="button" class="btn btn-outline-secondary btn-sm">connect</button></td>
+									</tr> 
+								</tbody>
+							</table>
+						</div>
+						<div class="container-fluid my-3">
+							<div class="inc-hide inc" id="inc-mch">
+								<h6>Include Machine</h6>
+								<div class="include-form">
+									<label class="la-name">Machine Name</label>
+							   	<input type="name" class="form-control" id="exampleFormControlInput1">
+									<label class="la-name">Session Count</label>
+							   	<input type="name" class="form-control" id="exampleFormControlInput1">
+							   	<div class="include-btn">
+							   		<button type="button" class="btn btn-success btn-sm">Include</button>
+							   	</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-fluid my-3">
+							<div class="exclude" id="exc-mch">
+								<h6>Exclude Machine</h6>
+								<div class="include-form">
+									<label class="la-name">Machine Name</label>
+					   			<input type="name" class="form-control" id="exampleFormControlInput1">
+									<label class="la-name">Session Count</label>
+					   			<input type="name" class="form-control" id="exampleFormControlInput1">
+					   			<div class="include-btn">
+					   				<button type="button" class="btn btn-success btn-sm">Exclude</button>
+					   			</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-fluid my-3">
+							<div class="add-machine" id="add-mch">
+								<h6>Add Machine</h6>
+								<div class="include-form">
+									<label class="la-name">Machine Name</label>
+					   			<input type="name" class="form-control" id="exampleFormControlInput1">
+									<label class="la-name">Machine Type</label>
+					   			<input type="name" class="form-control" id="exampleFormControlInput1">
+					   			<div class="include-btn">
+					   				<button type="button" class="btn btn-success btn-sm">Add</button>
+					   			</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-fluid my-3">
+							<div class=" remove-machine" id="rem-mch">
+								<h6>Remove Machine</h6>
+								<div class="include-form">
+									<label class="la-name">Machine Name</label>
+					   			<input type="name" class="form-control" id="exampleFormControlInput1">
+									<label class="la-name">Machine Type</label>
+					   			<input type="name" class="form-control" id="exampleFormControlInput1">
+					   			<div class="include-btn">
+					   				<button type="button" class="btn btn-success btn-sm">Remove</button>
+					   			</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<!-- ImpactView -->
+		<div id='impact' class="bodySection impactView">
+			<div class="impactView1">
+			<div class="impact-Body">
+				<div class="container impact-header">
+					<h6 style="padding: 7px; float: left;">List Of Impact View</h6>
+					<button type="button" class="btn btn-secondary btn-sm" id="imp-add" style="margin-top: 2px;">Add</button>
+				</div>
+				<div class="container impact-table">
+					<div class="row import-report">
+						<div class="col-2">
+							<div class="row impact-name2">
+								<span>Name Of Team</span>
+							</div>
+							<div class="row impact-name2">
+								<span>Build Owner</span>
+							</div>
+							<div class="row impact-name2">
+								<span>Status</span>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="row impact-name">
+								<span>Zoho Projects</span>
+							</div>
+							<div class="row impact-name">
+								<span>Tester</span>
+							</div>
+							<div class="row impact-name">
+								<span>In Progress</span>
+							</div>
+						</div>
+						<div class="col-2">
+							<div class="row impact-name2">
+								<span>Url</span>
+							</div>
+							<div class="row impact-name2">
+								<span>User Branch</span>
+							</div>
+							<div class="row impact-name2">
+								<span>Failiour</span>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="row impact-name">
+								<span>https:\\www.zohoprojects.com\</span>
+							</div>
+							<div class="row impact-name">
+								<span>Test</span>
+							</div>
+							<div class="row impact-name">
+								<span>No</span>
+							</div>
+						</div>
+					<hr>
+				</div>
+			</div>
+			</div>
+			<div class="add-impact">
+				<div class="card imp-add-card">
+					<div class="row">
+						<div class="imp-form-1">
+							<div class="row impact-name1">
+								<span>Application Name</span>
+							</div>
+							<div class="row impact-name1">
+								<span>Master Branch</span>
+							</div>
+							<div class="row impact-name1">
+								<span>Default Changeset</span>
+							</div>
+							<div class="row impact-name1">
+								<span>Branch</span>
+							</div>
+							<div class="row impact-name1">
+								<span>Build Url</span>
+							</div>
+						</div>
+						<div class="imp-form-2">
+							<div class="app-selectBox">
+								<select class="form-control sel-app-name" style="font-size: 10px;">
+		  							<option class="la-name">Zoho project</option>
+								</select>
+							</div>
+							<div class="app-selectBox">
+								<select class="form-control sel-master-branch"  style="font-size: 10px;">
+		  							<option class="la-name">Master</option>
+								</select>
+							</div>
+							<div class="form-group">
+					   			<input type="name" class="form-control sel-app-name impact-bor-cancel" id="exampleFormControlInput1">
+							</div>
+							<div class="form-group">
+					   			<input type="name" class="form-control sel-app-name impact-bor-cancel" id="exampleFormControlInput1" placeholder="Enter the Branch Name">
+							</div>
+							<div class="form-group">
+					   			<input type="name" class="form-control sel-app-name impact-bor-cancel" id="exampleFormControlInput1" placeholder="Enter the Branch Url">
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn btn-secondary btn-sm imp-btn" id="imp-sub-btn">Check Impact</button>
+				</div>
+			</div>
+		</div>
+		</div>
+		<!-- BugView -->
+		<div id='bug' class="bodySection bugReport my-2">
+			<div class="bugReport1">
+			<div class="container my-2">
+				<div class="bug-header h-10">
+					<div class="row">
+						<div class="col-6">
+							<h5 class="text-primary">Bug Report</h5>
+						</div>
+						<div class="col-6 text-end">
+							<button class="btn btn-primary btn-sm " id="bug-Id-new">AddBug</button>
+						</div>
+					</div>
+				</div>
+				<div class="bug-table my-3">
+					<table class="table table-hover table-sm">
+						<thead style="color: red;" class="thead-dark">
+							<tr>
+							   <th scope="col">Id</th>
+							   <th scope="col">Bug Title</th>
+							   <th scope="col">Descripion</th>
+							   <th scope="col">Tag Name</th>
+							   <th scope="col">Assinee Name</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+							   	<th scope="row">1</th>
+							   	<td>TaskCreate</td>
+							   	<td>Description Area</td>
+							    <td>Linux</td>
+							    <td>Name1</td> 
+							</tr>
+							<tr>
+							    <th scope="row">2</th>
+							   	<td>TaskModify</td>
+							   	<td>Description Area</td>
+							    <td>TagName1</td>
+							    <td>Name2</td>
+							</tr>
+							<tr>
+							    <th scope="row">3</th>
+							   	<td>ProjectDelete</td>
+							   	<td>Description Area</td>
+							    <td>TagName2</td>
+							    <td>Name3</td>
+							</tr>
+							<tr>
+							    <th scope="row">4</th>
+							   	<td>Task</td>
+							   	<td>Description Area</td>
+							    <td>Tagname3</td>
+							    <td>Name4</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<!-- <div id="bodycontent" class="bodySection"> -->
+
+		</div>
+	</div>
+	<script type="text/javascript"> 
+				
+		var ctxL = document.getElementById("lineChart").getContext('2d');
+			var myLineChart = new Chart(ctxL, {
+			type: 'line',
+			data: {
+			labels: [
+	          "Monday",
+	          "Tuesday",
+	          "Wednesday",
+	          "Thursday",
+	          "Friday",
+	        ],
+			datasets: [{
+			label: "Passed Cases",
+			data: [65, 59, 80, 81, 56],
+			backgroundColor: [
+			'rgba(255,245,235,.6)',
+			],
+			borderColor: [
+			'rgba(105, 0, 132, .2)',
+			],
+			borderWidth: 1
+			},
+			{
+			label: "Failed Cases",
+			data: [3, 2, 7, 5, 10	],
+			backgroundColor: [
+			'rgba(216,243,255,255)',
+			],
+			borderColor: [
+			'rgba(75,161,225,255)',
+			],
+			borderWidth: 1
+			}
+			]
+			},
+			options: {
+			responsive: true
+			}	
+			});
+
+	    var ctxD = document.getElementById("doughnutChart").getContext('2d');
+		var myLineChart = new Chart(ctxD, {
+			type: 'doughnut',
+			data: {
+			labels: ["Total", "Passed", "Failed"],
+			datasets: [{
+			data: [7, 6, 1],
+			backgroundColor: ["#FDB45C", "#00b09b", "#F7464A"],//#FDB45C
+			hoverBackgroundColor: ["#FDB45C", "#00b09b", "#F7464A"]
+			}]
+			},
+			options: {
+			responsive: true
+			}
+		});
+
+
+
+		$(document).ready(function(){
+
+		var location=window.location;
+	     var pathArray =location.toString().split("#");
+	     //alert(pathArray[1])
+	     if(pathArray[1]){
+	     	$('.bodySection').hide();
+	      	$('#'+pathArray[1]).show();
+	     }
+	     
+
+
+			$(".report-Id").click(function(){
+				
+				var pageSource=$(this).attr("attr");
+				window.history.pushState('obj', 'Tool','#'+pageSource);
+					     var location=window.location;
+					     var pathArray =location.toString().split("#");
+					     //alert(pathArray[1])
+					     $('.bodySection').hide();
+					     $('#'+pathArray[1]).show();
+
+					     $(".report-Id").removeClass("active");
+						$(this).addClass("active");
+				
+			});
+
+			$(".more-op-Id").click(function(){
+				
+				var pageSource=$(this).attr("attr");
+				window.history.pushState('obj', 'Tool','#'+pageSource);
+					     var location=window.location;
+					     var pathArray =location.toString().split("#");
+					     //alert(pathArray[1])
+					     $('.bodySection').hide();
+					     $('#'+pathArray[1]).show();
+
+				
+			});
+
+		});
+
+
+		
+//more-op-Id
+	</script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+</body>
+</html>
