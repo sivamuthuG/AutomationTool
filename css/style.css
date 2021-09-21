@@ -9,15 +9,6 @@ body{
     height: 100%;
     font: 1rem/1.5 var(--bs-font-sans-serif);
 }
-
-/*@media only screen and (min-width: 1200px) {
-  body {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    height: 100%
-  }
-}*/
 @media only screen and (min-width: 1280px) and (max-width: 767px) { 
 
     body{
