@@ -916,11 +916,11 @@ td{
     z-index: 10;
     width: 100%;
     background: #95959575;
-    height: auto;
+    height: 850px;
 }
 .bug-form{
     width: auto;
-    height: 800px;
+    height: 850px;
     background: #fff;
 }
 .bug1{
