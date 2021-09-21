@@ -267,6 +267,10 @@ body{
 .impact{
           margin-left: 10px;
 }
+
+.impact-form{
+            width: 500px;
+        }
 .impactIcon{
     color: cadetblue;
     font-size: 20px;
@@ -469,7 +473,7 @@ td{
     color: #00c0df;
 }
 .build-table{
-    height: 600px;
+    height: 655px;
     border-bottom: 1px solid #d3c9c9;
 }
 .uploadBox{
@@ -824,7 +828,7 @@ td{
 }
 .impact-table{
         margin-left: 40px;
-    height: 600px;
+    height: 700px;
     margin-top: 2px;
     border-radius: 4px;
     border: 1px solid #5d272724;
@@ -903,9 +907,14 @@ td{
     min-width: 200px;
     box-shadow: 0px 0px 20px 2px rgb(0 0 0 / 30%);
     z-index: 10;
-   /* width: 415px;*/
-    background: #ffffff;
+    width: 100%;
+    background: #95959575;
     height: 800px;
+}
+.bug-form{
+    width: auto;
+    height: 800px;
+    background: #fff;
 }
 .bug1{
    width: 125px;
