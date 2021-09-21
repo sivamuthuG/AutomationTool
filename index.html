@@ -76,8 +76,9 @@
 	</div>
 
 	<div class="bug-content">
-	<div class="row container">
-		<div class="bug-header">
+	<div class="row float-end">
+		<div class="bug-form container">
+				<div class="bug-header">
 			<div class="my-2 text-danger">
 				<h6>Add Issue</h6>
 				<hr>
@@ -86,19 +87,22 @@
 		<div class="bug-body">
 			<div class="my-3">
 				<label class="la-name">Bug Title</label>
-				<input type="name" class="form-control my-2" id="exampleFormControlInput1" style="font-size :13px;width: 360px;" placeholder="Enter the BugName">
-				<label class="la-name">Description</label>
-				<input type="name" class="form-control my-2 " id="exampleFormControlInput1" style="font-size :13px;width: 360px;" placeholder="Enter your Description ">
+				<input type="name" class="form-control my-2" id="exampleFormControlInput1" style="font-size :13px;width: 440px;" placeholder="Enter the BugName">
+				<!-- <label class="la-name">Description</label>
+				<input type="name" class="form-control my-2 " id="exampleFormControlInput1" style="font-size :13px;width: 440px;" placeholder="Enter your Description "> -->
+				 <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+ 				 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 				<label class="la-name">Tag Name</label>
-				<input type="name" class="form-control my-2 " id="exampleFormControlInput1" style="font-size :13px;width: 360px;" placeholder="Enter the TagName">
+				<input type="name" class="form-control my-2 " id="exampleFormControlInput1" style="font-size :13px;width: 440px;" placeholder="Enter the TagName">
 	   			<label class="la-name">Assinee Name</label>
-				<input type="name" class="form-control my-2 " id="exampleFormControlInput1" style="font-size :13px;width: 360px;" placeholder="Enter the Name">
+				<input type="name" class="form-control my-2 " id="exampleFormControlInput1" style="font-size :13px;width: 440px;" placeholder="Enter the Name">
 				<div class="my-5">
 					<button type="button" class="btn btn-danger btn-sm" id="bugadd-Id">Add</button>
 					<button type="button" class="btn btn-danger btn-sm mx-2" id="bugcancel-Id">Cancel</button>
 				</div>
 					   			
 			</div>
+		</div>
 		</div>
 	</div>
 </div>
@@ -1227,54 +1231,48 @@
 					<hr>
 				</div>
 			</div>
-			</div>
-			<div class="add-impact">
-				<div class="card imp-add-card">
-					<div class="row">
-						<div class="imp-form-1">
-							<div class="row impact-name1">
-								<span>Application Name</span>
-							</div>
-							<div class="row impact-name1">
-								<span>Master Branch</span>
-							</div>
-							<div class="row impact-name1">
-								<span>Default Changeset</span>
-							</div>
-							<div class="row impact-name1">
-								<span>Branch</span>
-							</div>
-							<div class="row impact-name1">
-								<span>Build Url</span>
-							</div>
-						</div>
-						<div class="imp-form-2">
-							<div class="app-selectBox">
-								<select class="form-control sel-app-name" style="font-size: 10px;">
-		  							<option class="la-name">Zoho project</option>
-								</select>
-							</div>
-							<div class="app-selectBox">
-								<select class="form-control sel-master-branch"  style="font-size: 10px;">
-		  							<option class="la-name">Master</option>
-								</select>
-							</div>
-							<div class="form-group">
-					   			<input type="name" class="form-control sel-app-name impact-bor-cancel" id="exampleFormControlInput1">
-							</div>
-							<div class="form-group">
-					   			<input type="name" class="form-control sel-app-name impact-bor-cancel" id="exampleFormControlInput1" placeholder="Enter the Branch Name">
-							</div>
-							<div class="form-group">
-					   			<input type="name" class="form-control sel-app-name impact-bor-cancel" id="exampleFormControlInput1" placeholder="Enter the Branch Url">
+		</div>
+		<div class="add-impact">
+			<div class="row my-5">
+				<div class="container">
+					<div class="col-m-12 my-5">
+						<div class="container">
+							<div class="row d-flex justify-content-center">
+								<div class="impact-form bg-white">
+									<h6 class="my-1 text-danger">Application Name</h6>
+									<div class=" my-2">
+										<select class="form-control" style="font-size: 10px;">
+						  					<option class="">Zoho project</option>
+										</select>
+									</div>
+									<h6 class="my-1 text-danger">Master Branch</h6>
+									<div class="my-2">
+										<select class="form-control"  style="font-size: 10px;">
+						  					<option class="">Master</option>
+										</select>
+									</div>
+									<h6 class="my-1 text-danger">Default Changeset</h6>
+									<div class="form-group my-2">
+									   	<input type="name" style="font-size: 10px;" class="form-control sel-app-name impact-bor-cancel " id="exampleFormControlInput1">
+									</div>
+									<h6 class="my-1 text-danger">Branch</h6>
+									<div class="form-group my-2">
+									   	<input type="name" style="font-size: 10px;" class="form-control sel-app-name impact-bor-cancel" id="exampleFormControlInput1" placeholder="Enter the Branch Name">
+									</div>
+									<h6 class="my-1 text-danger">Build Url</h6>
+									<div class="form-group my-2">
+									   	<input type="name" style="font-size: 10px;" class="form-control sel-app-name impact-bor-cancel" id="exampleFormControlInput1" placeholder="Enter the Branch Url">
+									</div>	
+									<button type="button" style="font-size: 10px;" class="btn btn-secondary btn-sm imp-btn mb-3 mt-2" id="imp-sub-btn">Check Impact</button>
+								</div>
 							</div>
 						</div>
 					</div>
-					<button type="button" class="btn btn-secondary btn-sm imp-btn" id="imp-sub-btn">Check Impact</button>
 				</div>
 			</div>
 		</div>
-		</div>
+	</div>
+</div>
 		<!-- BugView -->
 		<div id='bug' class="bodySection bugReport my-2">
 			<div class="bugReport1">
