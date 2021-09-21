@@ -37,8 +37,10 @@ body{
     margin: 0 -20px;
 }
 .nameText{
-        padding: 11px;
-        color: #fa7a4b;
+        
+        color: #fa7a4bfc;
+        font-size: 19px;
+        margin-left: -5px;
 }
     
 .searchBox{
@@ -172,7 +174,7 @@ body{
 }
 .toolBody{
         height: 800px;
-    width: 100%;
+        width: 100%;
 }
 .toolmenu{
         background: #051639;
@@ -188,7 +190,7 @@ body{
     margin-top: 10px;  
 }
 .dashBoard{
-       width: 68px;
+       width: 80px;
     margin-left: 0px;
     height: 65px;
 }
@@ -199,7 +201,7 @@ body{
     margin-left: 3px;
 }
 .report{
-          width: 68px;
+          width: 80px;
     margin-left: 0px;
     height: 65px;
 }
@@ -221,7 +223,7 @@ body{
     float: left;
 }
 .machine{
-      width: 68px;
+      width: 80px;
     margin-left: 0;
     height: 65px;
 }
@@ -914,11 +916,11 @@ td{
     z-index: 10;
     width: 100%;
     background: #95959575;
-    height: 850px;
+    height: auto;
 }
 .bug-form{
     width: auto;
-    height: 850px;
+    height: 800px;
     background: #fff;
 }
 .bug1{
@@ -981,11 +983,13 @@ td{
 
 @media only screen and (max-width: 600px) {
  .toolmenu {height: 900px;}
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .toolmenu {height: 900px;}
+ 
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -996,9 +1000,11 @@ td{
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
  .toolmenu {height: 1326px;}
+
 } 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .toolmenu {height: 900px;}
+   
 }
