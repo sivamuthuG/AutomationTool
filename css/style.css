@@ -4,11 +4,21 @@
 }
 body{
     /*overflow: hidden;*/
-    background: #fff;
+    background: #dbd9d98f;
+    position: relative;
     width: 100%;
     height: 100%;
     font: 1rem/1.5 var(--bs-font-sans-serif);
 }
+
+/*@media only screen and (min-width: 1200px) {
+  body {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    height: 100%
+  }
+}*/
 @media only screen and (min-width: 1280px) and (max-width: 767px) { 
 
     body{
@@ -20,6 +30,10 @@ body{
 .header{
     height: 60px;
     background: #1c0001;
+    position: fixed;
+    top: 0;
+    width: 101%;
+    z-index: 1;
 }
 .name{
        color: white;
@@ -155,7 +169,7 @@ body{
 .fullview{
        width: 32px;
     height: 22px;
-    margin-top: 245px;
+    margin-top: 125px;
     margin-left: 10px;
     font-size: 22px;
 }
@@ -165,12 +179,14 @@ body{
     color: #949b9b;
 }
 .toolBody{
-        background: #dbd9d98f;
         height: 800px;
 }
 .toolmenu{
-    background: #1c0001;
+        background: #1c0001;
     width: 80px;
+    position: fixed;
+    top: 60px;
+    z-index: 1;
 }
 .dashboardIcon{
          color: gray;
@@ -619,6 +635,12 @@ td{
 .cnt-txt{
         font-size: 13px;
 }
+
+.viewBody{
+    margin-left: 90px;
+    position: relative;
+    top: 60px;
+}
 .more-head{
     margin-left: 10px;
     color: #e87878;
@@ -900,7 +922,7 @@ td{
     z-index: 10;
     width: 100%;
     background: #95959575;
-    height: 800px;
+    height: auto;
 }
 .bug-form{
     width: auto;
