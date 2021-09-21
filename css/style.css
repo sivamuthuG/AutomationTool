@@ -21,7 +21,7 @@ body{
 
 .header{
     height: 60px;
-    background: #1c0001;
+    background: #051639;
     position: fixed;
     top: 0;
     width: 101%;
@@ -174,7 +174,7 @@ body{
         height: 800px;
 }
 .toolmenu{
-        background: #1c0001;
+        background: #051639;
     width: 80px;
     position: fixed;
     top: 60px;
@@ -757,7 +757,7 @@ td{
  }
 
 .active{
-    background: #fc020278;
+    background: #3d6b8478;
 }
 .machine-header{
     border-right: 1px solid #9b999969;
@@ -908,7 +908,6 @@ td{
 .bug-content{
     display: none;
     position: fixed;
-    background-color: #ae26263d;
     min-width: 200px;
     box-shadow: 0px 0px 20px 2px rgb(0 0 0 / 30%);
     z-index: 10;
