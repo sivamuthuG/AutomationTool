@@ -7,14 +7,12 @@ $(document).ready(function(){
     $(".toolmenu").hide(500);
     $(".expand").show();
     $(".full-view").hide();
-    $(".viewBody").css("margin-left","50px");
   });
 
    $("#expand_Id").click(function(){
     $(".toolmenu").show(500);
     $(".expand").hide();
     $(".full-view").show();
-    $(".viewBody").css("margin-left","0px");
   });
 
   $('#logo-Id').click(function() {
