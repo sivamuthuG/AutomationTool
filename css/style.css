@@ -172,6 +172,7 @@ body{
 }
 .toolBody{
         height: 800px;
+    width: 100%;
 }
 .toolmenu{
         background: #051639;
