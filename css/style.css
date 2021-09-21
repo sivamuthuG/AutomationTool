@@ -986,24 +986,20 @@ td{
 
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .toolmenu {height: 900px;}
  
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .toolmenu {height: 1710px;}
 } 
 
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
  .toolmenu {height: 1326px;}
 
 } 
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .toolmenu {height: 900px;}
    
