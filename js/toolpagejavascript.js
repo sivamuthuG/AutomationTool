@@ -2,22 +2,29 @@ $(document).ready(function(){
 
   $("#all-mch").addClass("machine-active");
 
+   var location=window.location;
+    var pathArray =location.toString().split("#");
+    $("#"+pathArray[1]+"Id").addClass("active");
+
 
    $("#full-view-Id").click(function(){
     $(".toolmenu").hide(500);
     $(".expand").show();
     $(".full-view").hide();
+  /*  $(".viewBody").css("margin-left","90px");*/
   });
 
    $("#expand_Id").click(function(){
     $(".toolmenu").show(500);
     $(".expand").hide();
     $(".full-view").show();
+    /*$(".viewBody").css("margin-left","0px");*/
   });
 
   $('#logo-Id').click(function() {
+   
     location.reload();
-    var pageSource=$(this).attr("attr");
+   
     
   });
 
